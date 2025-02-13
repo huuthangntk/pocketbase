@@ -7,7 +7,7 @@ WORKDIR /app
 RUN apk add --no-cache git make build-base
 
 # Clone the PocketBase repository
-RUN git clone https://github.com/huuthangntk/pocketbase.git .\
+RUN git clone https://github.com/huuthangntk/pocketbase.git \
     # Install dependencies
     go mod download && \
     go mod verify && \
