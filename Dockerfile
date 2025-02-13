@@ -6,15 +6,6 @@ WORKDIR /app
 # Install git and essential build tools
 RUN apk add --no-cache git make build-base
 
-
-# Clone the PocketBase repository
-RUN git clone https://github.com/huuthangntk/pocketbase.git appt && \
-    cd pocketbase && \
-    # Install dependencies
-    go mod download && \
-    go mod verify && \
-    go mod tidy
-
 # Stage 2: Build the application
 FROM installer AS builder
 WORKDIR /app
