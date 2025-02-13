@@ -7,26 +7,7 @@ WORKDIR /app
 RUN apk add --no-cache git make build-base
 
 # Clone the PocketBase repository
-RUN git clone https://github.com/pocketbase/pocketbase.git . && \
-    # Create the necessary directory structure
-    mkdir -p cmd/pocketbase && \
-    # Create main.go in the correct location
-    echo 'package main
-
-import (
-    "log"
-    "github.com/pocketbase/pocketbase"
-    "github.com/pocketbase/pocketbase/cmd"
-)
-
-func main() {
-    app := pocketbase.New()
-    serveCmd := cmd.NewServeCommand(app, true)
-    app.RootCmd.AddCommand(serveCmd)
-    if err := app.Start(); err != nil {
-        log.Fatal(err)
-    }
-}' > cmd/pocketbase/main.go && \
+RUN git clone https://github.com/huuthangntk/pocketbase.git .\
     # Install dependencies
     go mod download && \
     go mod verify && \
